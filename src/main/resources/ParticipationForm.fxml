@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.ParticipationFormController"
+      stylesheets="@style/UserDashboard.css"
+        styleClass="form-container">
+<Label text="Participation Form" styleClass="heading" />
+<ImageView fx:id="eventImage" styleClass="event-image" />
+<Label styleClass="subheading" />
+<TextField fx:id="fullNameTF" styleClass="text-field" promptText="Full Name" />
+<TextField fx:id="emailTF" styleClass="text-field" promptText="Email Address" />
+<TextField fx:id="phoneTF" styleClass="text-field" promptText="Phone Number" />
+<TextField fx:id="locationTF" styleClass="text-field" promptText="Your Location" />
+<Button text="Submit" styleClass="button" onAction="#submitParticipation" />
+        </VBox>

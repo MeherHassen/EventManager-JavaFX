@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@style/EventCrud.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EventCrud">
+   <children>
+      <VBox spacing="20" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" styleClass="main-container">
+         <!-- Header Section -->
+         <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header">
+            <padding>
+               <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <ImageView fitHeight="80.0" fitWidth="80.0" preserveRatio="true">
+               <image>
+                  <Image url="@photos/logo_inverted.png" />
+               </image>
+            </ImageView>
+            <Label text="Event Management" styleClass="title"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="switchAccountButton" onAction="#switchAccount" text="Switch to User" styleClass="nav-button"/>
+         </HBox>
+
+         <!-- Main Content -->
+         <HBox spacing="30" VBox.vgrow="ALWAYS">
+            <padding>
+               <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <!-- Left Side - Form -->
+            <VBox spacing="15" styleClass="form-container" HBox.hgrow="ALWAYS">
+               <Label text="Event Details" styleClass="section-title"/>
+               
+               <Label text="Name" styleClass="field-label"/>
+               <TextField fx:id="nameTF" styleClass="text-input"/>
+               
+               <Label text="Description" styleClass="field-label"/>
+               <TextArea fx:id="descriptionTF" styleClass="text-input" wrapText="true" prefRowCount="4"/>
+               
+               <Label text="Date" styleClass="field-label"/>
+               <DatePicker fx:id="dateDP" styleClass="date-picker"/>
+               
+               <!-- Action Buttons -->
+               <HBox spacing="10" styleClass="button-container">
+                  <Button fx:id="addButton" onAction="#addevent" text="Add Event" styleClass="action-button, add-button"/>
+                  <Button fx:id="modifyButton" onAction="#modifyevent" text="Modify Event" styleClass="action-button, edit-button"/>
+                  <Button fx:id="deletButton" onAction="#deleteevent" text="Delete Event" styleClass="action-button, delete-button"/>
+               </HBox>
+            </VBox>
+            
+            <!-- Right Side - Event List -->
+            <VBox spacing="15" styleClass="list-container" HBox.hgrow="ALWAYS">
+               <Label text="Events List" styleClass="section-title"/>
+               <ListView fx:id="eventLV" VBox.vgrow="ALWAYS" styleClass="event-list"/>
+               <Button fx:id="showLocationButton" onAction="#showlocation" text="View Location" styleClass="location-button"/>
+            </VBox>
+         </HBox>
+      </VBox>
+   </children>
+</AnchorPane>
