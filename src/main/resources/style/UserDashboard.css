@@ -1,0 +1,179 @@
+/* Root styles and variables */
+* {
+    -primary-color: #2ecc71;
+    -primary-dark: #27ae60;
+    -primary-light: #a8e6cf;
+    -secondary-color: #3498db;
+    -danger-color: #e74c3c;
+    -background-color: #f8f9fa;
+    -card-background: white;
+    -text-primary: #2c3e50;
+    -text-secondary: #576574;
+    -border-color: #e9ecef;
+}
+
+.root {
+    -fx-background-color: -background-color;
+    -fx-font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* Top Navigation Bar */
+.top-bar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+}
+
+.app-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+/* Main Content */
+.main-content {
+    -fx-background-color: -background-color;
+}
+
+.split-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-background-color: -border-color;
+    -fx-padding: 0 1 0 1;
+}
+
+/* Panels */
+.side-panel, .main-panel {
+    -fx-background-color: transparent;
+}
+
+/* Section Titles */
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+    -fx-padding: 0 0 10 0;
+}
+
+/* Search Section */
+.search-section {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);
+}
+
+.search-field {
+    -fx-background-color: -background-color;
+    -fx-padding: 8 12;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: -border-color;
+    -fx-prompt-text-fill: -text-secondary;
+}
+
+.search-field:focused {
+    -fx-border-color: -primary-color;
+    -fx-background-color: white;
+}
+
+/* Modern Date Picker */
+.modern-date-picker {
+    -fx-background-color: -background-color;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: -border-color;
+}
+
+.modern-date-picker:focused {
+    -fx-border-color: -primary-color;
+}
+
+.modern-date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 20 20 0;
+}
+
+.modern-date-picker .arrow-button:hover {
+    -fx-background-color: derive(-primary-color, 90%);
+}
+
+/* List View */
+.modern-list {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);
+}
+
+.modern-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 15;
+    -fx-background-radius: 8;
+}
+
+.modern-list .list-cell:filled:hover {
+    -fx-background-color: derive(-background-color, 2%);
+}
+
+.modern-list .list-cell:filled:selected {
+    -fx-background-color: derive(-primary-color, 90%);
+    -fx-text-fill: -primary-color;
+}
+
+/* Map Container */
+.map-container {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: -border-color;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);
+    -fx-min-height: 300;
+}
+
+/* Form Panel */
+.form-panel {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);
+}
+
+/* Navigation Buttons */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -primary-color;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+    -fx-graphic-text-gap: 8;
+}
+
+.nav-button:hover {
+    -fx-background-color: derive(-primary-color, 90%);
+}
+
+/* Scrollbars */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: derive(-border-color, -10%);
+    -fx-background-radius: 10;
+}
+
+.scroll-bar:vertical .thumb:hover,
+.scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: derive(-border-color, -20%);
+}
+
+/* Transitions */
+.button, .search-field, .modern-list .list-cell {
+    -fx-transition: all 0.2s ease-in-out;
+}
