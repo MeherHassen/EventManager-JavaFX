@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+
+<BorderPane prefHeight="900.0" prefWidth="1200.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.UserDashboardController"
+            stylesheets="@style/UserDashboard.css">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+            
+            <ImageView fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
+                <image>
+                    <Image url="@photos/logo_inverted.png" />
+                </image>
+            </ImageView>
+            
+            <Label styleClass="app-title" text="Event Dashboard"/>
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Button fx:id="switchAccountButton" styleClass="nav-button" text="Switch to Admin" onAction="#switchAccount">
+                <graphic>
+                    <ImageView fitHeight="16" fitWidth="16" preserveRatio="true">
+                        <Image url="@icons/admin.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            
+            <Button styleClass="nav-button" text="View Calendar" onAction="#showCalendarView">
+                <graphic>
+                    <ImageView fitHeight="16" fitWidth="16" preserveRatio="true">
+                        <Image url="@icons/calendar.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.4" styleClass="main-content">
+            <!-- Left Panel: Locations -->
+            <VBox styleClass="side-panel" spacing="20">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                
+                <Label text="Locations" styleClass="section-title"/>
+                
+                <!-- Location Search -->
+                <VBox spacing="10" styleClass="search-section">
+                    <HBox spacing="10">
+                        <TextField fx:id="locationNameSearch" promptText="Search by name" 
+                                 styleClass="search-field" HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="locationCapacitySearch" promptText="Min capacity" 
+                                 styleClass="search-field" prefWidth="120"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Locations List -->
+                <ListView fx:id="locationLV" VBox.vgrow="ALWAYS" styleClass="modern-list"/>
+                
+                <!-- Map Section -->
+                <Label text="Location Map" styleClass="section-title"/>
+                <VBox fx:id="mapContainer" styleClass="map-container" VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+            <!-- Right Panel: Events -->
+            <VBox styleClass="main-panel" spacing="20">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                
+                <Label text="Events" styleClass="section-title"/>
+                
+                <!-- Event Search -->
+                <VBox spacing="10" styleClass="search-section">
+                    <HBox spacing="10">
+                        <TextField fx:id="eventNameSearch" promptText="Search by name" 
+                                 styleClass="search-field" HBox.hgrow="ALWAYS"/>
+                        <DatePicker fx:id="eventDateSearch" promptText="Search by date" 
+                                  styleClass="modern-date-picker"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Events List -->
+                <ListView fx:id="eventLV" VBox.vgrow="ALWAYS" styleClass="modern-list"/>
+                
+                <!-- Participation Form -->
+                <VBox styleClass="form-panel" spacing="15">
+                    <Label text="Event Participation" styleClass="section-title"/>
+                    <fx:include fx:id="participationForm" source="ParticipationForm.fxml"/>
+                </VBox>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>

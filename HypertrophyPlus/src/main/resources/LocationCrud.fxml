@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="900.0" prefWidth="1200.0" stylesheets="@style/LocationCrud.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LocationCrud">
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+            
+            <ImageView fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
+                <image>
+                    <Image url="@photos/logo_inverted.png" />
+                </image>
+            </ImageView>
+            
+            <Label styleClass="app-title" text="Location Management"/>
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Button fx:id="switchAccountButton" styleClass="nav-button" text="Switch to User" onAction="#switchAccount">
+                <graphic>
+                    <ImageView fitHeight="16" fitWidth="16" preserveRatio="true">
+                        <Image url="@icons/switch-user.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <HBox spacing="30" styleClass="main-content">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+            
+            <!-- Left Panel: Location Form -->
+            <VBox styleClass="form-panel" spacing="20" HBox.hgrow="ALWAYS" maxWidth="400">
+                <Label text="Location Details" styleClass="section-title"/>
+                
+                <VBox spacing="10">
+                    <Label text="Name" styleClass="field-label"/>
+                    <TextField fx:id="nameTF" styleClass="modern-field" promptText="Enter location name"/>
+                </VBox>
+                
+                <VBox spacing="10">
+                    <Label text="Address" styleClass="field-label"/>
+                    <TextArea fx:id="adressTF" styleClass="modern-field" wrapText="true" 
+                             promptText="Enter full address" prefRowCount="3"/>
+                </VBox>
+                
+                <VBox spacing="10">
+                    <Label text="Capacity" styleClass="field-label"/>
+                    <TextField fx:id="capacityTF" styleClass="modern-field" promptText="Enter capacity"/>
+                </VBox>
+                
+                <VBox spacing="10">
+                    <Label text="Coordinates" styleClass="field-label"/>
+                    <HBox spacing="10">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Latitude" styleClass="sub-field-label"/>
+                            <TextField fx:id="latitudeField" styleClass="modern-field" editable="false"/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Longitude" styleClass="sub-field-label"/>
+                            <TextField fx:id="longitudeField" styleClass="modern-field" editable="false"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+                
+                <!-- Action Buttons -->
+                <HBox spacing="15" styleClass="action-buttons">
+                    <Button fx:id="addButton" styleClass="primary-button" text="Add Location" onAction="#addlocation"/>
+                    <Button fx:id="mdifyButton" styleClass="secondary-button" text="Update" onAction="#modifylocation"/>
+                    <Button fx:id="deleteButton" styleClass="danger-button" text="Delete" onAction="#deletelocation"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Right Panel: List and Map -->
+            <VBox spacing="20" HBox.hgrow="ALWAYS">
+                <!-- Locations List -->
+                <VBox spacing="10" VBox.vgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="Locations" styleClass="section-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <!-- Search Fields -->
+                        <HBox spacing="10" alignment="CENTER_RIGHT">
+                            <TextField fx:id="searchNameField" promptText="Search by name" 
+                                     styleClass="search-field" prefWidth="200"/>
+                            <TextField fx:id="searchCapacityField" promptText="Min capacity" 
+                                     styleClass="search-field" prefWidth="120"/>
+                        </HBox>
+                    </HBox>
+                    <ListView fx:id="locationLV" styleClass="modern-list" VBox.vgrow="ALWAYS"/>
+                </VBox>
+                
+                <!-- Map Section -->
+                <VBox spacing="10" VBox.vgrow="ALWAYS">
+                    <Label text="Location Map" styleClass="section-title"/>
+                    <StackPane styleClass="map-container" VBox.vgrow="ALWAYS">
+                        <VBox fx:id="mapContainer"/>
+                    </StackPane>
+                </VBox>
+                
+                <Button fx:id="showButton" styleClass="accent-button" text="View Events" onAction="#showevents"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

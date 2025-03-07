@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" stylesheets="@style/admin-dashboard.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminDashboardController">
+
+   <!-- Left Sidebar -->
+   <BorderPane fx:id="mainContentPane" prefHeight="600.0" prefWidth="900.0">
+      <left>
+         <VBox prefHeight="600.0" prefWidth="216.0" styleClass="sidebar">
+            <children>
+               <Label alignment="CENTER" prefHeight="63.0" prefWidth="215.0" styleClass="sidebar-header" text="EVENT MANAGEMENT">
+                  <font>
+                     <Font name="Inter Bold" size="20.0" />
+                  </font>
+               </Label>
+
+               <StackPane alignment="CENTER" prefHeight="120.0" prefWidth="180.0">
+                  <children>
+                     <Circle fill="WHITE" radius="60.0" />
+                  </children>
+               </StackPane>
+
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <padding>
+                     <Insets left="20.0" />
+                  </padding>
+                  <children>
+                     <Label styleClass="sidebar-text" text="Username:" />
+                     <Label styleClass="sidebar-text" text="Med" />
+                  </children>
+               </HBox>
+
+               <Pane prefHeight="20.0" prefWidth="180.0" />
+
+               <Label styleClass="sidebar-section" text="FEATURES">
+                  <padding>
+                     <Insets left="20.0" />
+                  </padding>
+               </Label>
+
+               <VBox spacing="10.0">
+                  <children>
+                     <Label fx:id="dashboardLabel" styleClass="sidebar-item" text="Dashboard" />
+                     <Label fx:id="eventLabel" styleClass="sidebar-item" text="Events" />
+                     <Label fx:id="locationLabel" styleClass="sidebar-item" text="Locations" />
+                     <Label fx:id="calendarLabel" styleClass="sidebar-item" text="Calendar" />
+                  </children>
+               </VBox>
+
+               <Label styleClass="sidebar-section" text="PROFILE">
+                  <padding>
+                     <Insets left="20.0" />
+                  </padding>
+               </Label>
+
+               <Label styleClass="sidebar-item" text="Profile Settings" />
+
+               <Pane prefHeight="100.0" prefWidth="180.0" VBox.vgrow="ALWAYS" />
+            </children>
+         </VBox>
+      </left>
+
+      <!-- Center Content -->
+      <center>
+         <ScrollPane fitToWidth="true" styleClass="content-area">
+            <content>
+               <VBox spacing="25.0" styleClass="section-spacer">
+                  <HBox spacing="20.0">
+                     <AnchorPane prefWidth="220.0" styleClass="stat-card">
+                        <children>
+                           <Label styleClass="card-title" text="TOTAL EVENTS" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                           <Label styleClass="card-value" text="25" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0" />
+                        </children>
+                     </AnchorPane>
+
+                     <AnchorPane prefWidth="220.0" styleClass="stat-card">
+                        <children>
+                           <Label styleClass="card-title" text="ACTIVE LOCATIONS" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                           <Label styleClass="card-value" text="15" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0" />
+                        </children>
+                     </AnchorPane>
+
+                     <AnchorPane prefWidth="220.0" styleClass="stat-card">
+                        <children>
+                           <Label styleClass="card-title" text="UPCOMING EVENTS" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                           <Label styleClass="card-value" text="8" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0" />
+                        </children>
+                     </AnchorPane>
+                  </HBox>
+
+                  <HBox spacing="20.0">
+                     <AnchorPane prefHeight="350.0" prefWidth="600.0" styleClass="chart-card">
+                        <children>
+                           <LineChart legendVisible="false">
+                              <xAxis>
+                                 <CategoryAxis label="Months" />
+                              </xAxis>
+                              <yAxis>
+                                 <NumberAxis label="Events" />
+                              </yAxis>
+                           </LineChart>
+                        </children>
+                     </AnchorPane>
+                  </HBox>
+               </VBox>
+            </content>
+         </ScrollPane>
+      </center>
+
+      <top>
+         <HBox alignment="CENTER_LEFT" prefHeight="61.0" spacing="20.0" styleClass="top-bar">
+            <children>
+               <Label styleClass="header-label" text="DASHBOARD OVERVIEW">
+                  <font>
+                     <Font name="Inter Bold" size="18.0" />
+                  </font>
+               </Label>
+               <Pane HBox.hgrow="ALWAYS" />
+               <Label fx:id="timeLabel" styleClass="subheading" />
+               <Label styleClass="subheading" text="Welcome," />
+               <Label styleClass="admin-label" text="Admin" />
+            </children>
+            <padding>
+               <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+         </HBox>
+      </top>
+   </BorderPane>
+</AnchorPane>

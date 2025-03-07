@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.CalendarViewController"
+            prefWidth="1200" prefHeight="800"
+            styleClass="calendar-view"
+            stylesheets="@style/calendar-view.css">
+
+    <top>
+        <VBox spacing="10">
+            <!-- Back Button -->
+            <HBox alignment="CENTER_LEFT" styleClass="back-button-container">
+                <padding>
+                    <Insets top="10" left="20" right="20" bottom="0"/>
+                </padding>
+                <Button fx:id="backButton" text="← Back to Dashboard" 
+                        onAction="#backToDashboard" styleClass="back-button"/>
+            </HBox>
+            
+            <!-- Calendar Header -->
+            <HBox spacing="15" alignment="CENTER" styleClass="calendar-header">
+                <padding>
+                    <Insets top="10" bottom="10" left="20" right="20"/>
+                </padding>
+                <Button fx:id="prevMonthBtn" text="◀" styleClass="nav-button"/>
+                <DatePicker fx:id="datePicker" styleClass="date-picker"/>
+                <Button fx:id="nextMonthBtn" text="▶" styleClass="nav-button"/>
+                <Button text="Today" styleClass="nav-button" onAction="#goToToday"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.6">
+            <!-- Left side: Events List -->
+            <VBox spacing="10" styleClass="events-panel">
+                <padding>
+                    <Insets top="20" bottom="20" left="20" right="20"/>
+                </padding>
+                <Label fx:id="selectedDateLabel" styleClass="selected-date"/>
+                <ListView fx:id="eventList" VBox.vgrow="ALWAYS" styleClass="event-list"/>
+            </VBox>
+
+            <!-- Right side: Event Details and Map -->
+            <VBox spacing="15" styleClass="details-panel">
+                <padding>
+                    <Insets top="20" bottom="20" left="20" right="20"/>
+                </padding>
+                <!-- Event Details -->
+                <VBox fx:id="eventDetailsPane" styleClass="event-details" spacing="10">
+                    <Label text="Event Details" styleClass="section-header"/>
+                    <Label fx:id="eventNameLabel" styleClass="event-name"/>
+                    <Label fx:id="eventDateLabel" styleClass="event-info"/>
+                    <Label fx:id="eventLocationLabel" styleClass="event-info"/>
+                    <TextArea fx:id="eventDescriptionArea" styleClass="event-description" 
+                             editable="false" wrapText="true" prefRowCount="3"/>
+                </VBox>
+                
+                <!-- Map View -->
+                <VBox fx:id="mapContainer" VBox.vgrow="ALWAYS" styleClass="map-container">
+                    <Label text="Event Location" styleClass="section-header"/>
+                </VBox>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>
